@@ -9,13 +9,14 @@ import static org.junit.jupiter.api.Assertions.*;
 public class CuentaCorrienteTest {
 
 
-    static CuentaCorriente cuenta;
+    static CuentaCorriente cuenta,cuenta2;
 
 
 
     @BeforeAll
     public static void init(){
         cuenta = new CuentaCorriente("pablo",40000,450);
+        cuenta2 = new CuentaCorriente("pablo",40000,450);
         System.out.println("Cuenta creada");
     }
 
@@ -56,11 +57,10 @@ public class CuentaCorrienteTest {
     }
 
     @Test
-    @DisplayName("addInteres")
-    public void interes(){
-        CuentaCorriente cuenta2=cuenta;
+    @DisplayName("AgregarInteres")
+    void agregarInteres(){
         cuenta.addInterest();
-        assertSame(cuenta.getSaldo(),cuenta2.getSaldo());
+        assertNotEquals(cuenta.getSaldo(), cuenta2.getSaldo());
     }
 
 
